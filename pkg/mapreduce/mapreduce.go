@@ -4,12 +4,14 @@ import (
 	"github.com/tdadadavid/mapreduce/pkg/mappers"
 	"github.com/tdadadavid/mapreduce/pkg/master"
 	"github.com/tdadadavid/mapreduce/pkg/reducers"
+	"github.com/tdadadavid/mapreduce/pkg/statistics"
 )
 
 type MR struct {
 	config   master.Config
 	mappers  mappers.Mapper
 	reducers reducers.Reducer
+	stats    statistics.Stats
 }
 
 func New() MR {
