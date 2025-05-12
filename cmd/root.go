@@ -19,13 +19,6 @@ var rootCmd = cobra.Command{
 		// start the mapreduce
 		mr := mr.New()
 
-		// specify configuration for the mapreduce
-		mr.SetMapCount(mapCount).
-			SetReduceCount(reduceCount)
-
-		// optionally, you add register combiners (mini-reduce) for better performance
-		//TODO: add optional combiner support
-
 		// implementations
 		// word-counter
 		counter := implementation.NewWordCounter()
@@ -34,6 +27,13 @@ var rootCmd = cobra.Command{
 		// register mappers and reducers
 		mr.RegisterMapper(&counter)
 		mr.RegisterReducer(&adder)
+
+		// specify configuration for the mapreduce
+		mr.SetMapCount(mapCount).
+			SetReduceCount(reduceCount)
+
+		// optionally, you add register combiners (mini-reduce) for better performance
+		//TODO: add optional combiner support
 
 		// run mapreduce framework
 		mr.Run()
