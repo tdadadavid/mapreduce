@@ -17,7 +17,7 @@ RUN apk --no-cache add ca-certificates
 
 WORKDIR /root/
 # Copy the binary from the builder stage
-COPY --from=builder /app/mapreduce .
+COPY --from=builder /app/mr .
 
 # Command to run the binary
 CMD ["./mr", "--mc=10", "--rc=2"]
