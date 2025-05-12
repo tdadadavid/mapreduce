@@ -1,5 +1,5 @@
 # Use an official Go runtime as a parent image
-FROM golang:1.22 as builder
+FROM golang:1.23.5 as builder
 
 # Set the working directory outside $GOPATH to enable Go modules
 WORKDIR /app
