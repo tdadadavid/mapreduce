@@ -47,6 +47,6 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.PersistentFlags().IntVarP(&mapCount, "map", "m", 10, "Number of mappers to run")
-	rootCmd.PersistentFlags().IntVarP(&reduceCount, "reduce", "r", 10, "Number of reducers to run")
+	rootCmd.PersistentFlags().IntVarP(&mapCount, "map", "mc", 10, "Number of mappers to run")
+	rootCmd.PersistentFlags().IntVarP(&reduceCount, "reduce", "rc", 10, "Number of reducers to run")
 }
