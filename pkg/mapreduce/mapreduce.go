@@ -1,0 +1,35 @@
+package mr
+
+import (
+	"github.com/tdadadavid/mapreduce/pkg/mappers"
+	"github.com/tdadadavid/mapreduce/pkg/master"
+	"github.com/tdadadavid/mapreduce/pkg/reducers"
+)
+
+type MR struct {
+	config   master.Config
+	mappers  mappers.Mapper
+	reducers reducers.Reducer
+}
+
+func New() MR {
+	return MR{}
+}
+
+func (m *MR) Run() {}
+
+func (m *MR) RegisterMapper() {}
+
+func (m *MR) RegisterReducer() {}
+
+// SetMapCount sets the number of mappers to run
+func (m *MR) SetMapCount(count int) *MR {
+	m.config.MapperCount = count
+	return m
+}
+
+// SetReduceCount sets the number of reducers to run
+func (m *MR) SetReduceCount(count int) *MR {
+	m.config.ReducerCount = count
+	return m
+}
