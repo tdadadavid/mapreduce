@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
+	"github.com/tdadadavid/mapreduce/pkg/implementation"
 	"github.com/tdadadavid/mapreduce/pkg/mapreduce"
 	"os"
 )
@@ -18,15 +19,21 @@ var rootCmd = cobra.Command{
 		// start the mapreduce
 		mr := mr.New()
 
-		// register mappers and reducers
-		mr.RegisterMapper()
-		mr.RegisterReducer()
-
-		// optionally, you add register combiners (mini-reduce) for better performance
-
 		// specify configuration for the mapreduce
 		mr.SetMapCount(mapCount).
 			SetReduceCount(reduceCount)
+
+		// optionally, you add register combiners (mini-reduce) for better performance
+		//TODO: add optional combiner support
+
+		// implementations
+		// word-counter
+		counter := implementation.NewWordCounter()
+		adder := implementation.NewWordReducer()
+
+		// register mappers and reducers
+		mr.RegisterMapper(&counter)
+		mr.RegisterReducer(&adder)
 
 		// run mapreduce framework
 		mr.Run()
